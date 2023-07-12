@@ -1,0 +1,21 @@
+name: Build and run on push
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./bsearch
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: make
+      run: make
+    - name: make run
+      run: make run
