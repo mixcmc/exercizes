@@ -61,5 +61,14 @@ int main()
 	solve(v4, 4);
 	solve(v4, 2);
 
+	vector<int> v5 = {-1, 0, 3, 2, -1};
+	sort(v5.begin(), v5.end());
+	print_vector(v5);
+	solve(v5, 0);
+	solve(v5, 1);
+	solve(v5, -1);
+	solve(v5, 3);
+	solve(v5, 2);
+
 	return 0;
 }
