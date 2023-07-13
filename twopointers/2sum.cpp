@@ -17,13 +17,14 @@ bool solve(vector<int> &v, int val)
 	}
 	auto l = v.begin();
 	auto r = prev(v.end());
+	cout << "search sum = " << val << endl;
 	while (l != r) {
 		auto sum = *l + *r;
 		if (sum == val) {
 			cout << *l << " + " << *r << " = " << val << endl;
 			return true;
 		}
-		if (sum > val && *l > *r) ++l;
+		if (sum > val && *l > *r || sum < val && *l < *r) ++l;
 		else --r;
 	}
 	cout << "Not found\n";
