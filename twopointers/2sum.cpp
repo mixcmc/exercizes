@@ -1,6 +1,7 @@
 /* 2sum.cpp
  *
  * Check if there are two numbers in the array that adds up to given number.
+ * Array must be sorted.
  * */
 #include <iostream>
 #include <vector>
