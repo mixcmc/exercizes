@@ -10,7 +10,7 @@ using std::cout, std::endl, std::vector, std::prev;
 bool solve(vector<int> &v, int val)
 {
 	if (v.empty()) {
-		cout << "Vector empty\n";
+		cout << "Vector is empty\n";
 		return false;
 	}
 	auto l = v.begin();
@@ -18,7 +18,7 @@ bool solve(vector<int> &v, int val)
 	while (l != r) {
 		auto sum = *l + *r;
 		if (sum == val) {
-			cout << *l << " + " << *r << " " << val << endl;
+			cout << *l << " + " << *r << " = " << val << endl;
 			return true;
 		}
 		if (sum > val && *l > *r) ++l;
