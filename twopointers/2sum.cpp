@@ -5,7 +5,9 @@
 #include <iostream>
 #include <vector>
 #include <iterator>
-using std::cout, std::endl, std::vector, std::prev;
+#include <algorithm>
+using std::cout, std::endl, std::vector, std::prev, std::sort, std::copy;
+using std::ostream_iterator;
 
 bool solve(vector<int> &v, int val)
 {
@@ -28,9 +30,17 @@ bool solve(vector<int> &v, int val)
 	return false;
 }
 
+void print_vector(vector<int>& v)
+{
+	cout << "{";
+	copy(v.begin(), v.end(), ostream_iterator<int>(cout, ","));
+	cout << "}\n";
+}
+
 int main()
 {
 	vector<int> v = {1,2,3,4,5,6};
+	print_vector(v);
 	solve(v, 3);
 	solve(v, 7);
 	solve(v, 5);
@@ -38,12 +48,15 @@ int main()
 	solve(v, 2);
 
 	vector<int> vv;
+	print_vector(vv);
 	solve(vv, 3);
 
 	vector<int> vvv = {1};
+	print_vector(vvv);
 	solve(vvv,1);
 
 	vector<int> v4 = {1,2,3};
+	print_vector(v4);
 	solve(v4, 4);
 	solve(v4, 2);
 
