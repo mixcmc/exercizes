@@ -13,12 +13,12 @@ using std::string;
 size_t solve(const string& s)
 {
 	size_t l = 0, r = s.size();
-	while (l != r) {
+	while (l <= r) {
 		auto mid = (l+r)/2;
 		if (s[mid] == '0') {
-			l++;
+			l = mid + 1;
 		} else {
-			r--;
+			r = mid - 1;
 		}
 	}
 	return (l+r)/2;
