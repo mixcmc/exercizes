@@ -20,6 +20,10 @@
 #include <climits>
 using namespace std;
 
+/* sort: O(NlogN)
+ * next_permutation: O(N)
+ * main loop: O(N^2)
+ * Total: O(N^2) */
 int naive(vector<int>& v)
 {
 	sort(v.begin(), v.end());
@@ -35,13 +39,25 @@ int naive(vector<int>& v)
 	return min_max_pair;
 }
 
+/* O(NlogN): sort + linear summing */
+int sol(vector<int> &v)
+{
+	int max_pair = INT_MIN;
+	sort(v.begin(), v.end());
+	for (int i = 0; i < v.size()/2; ++i) {
+		int pair = v[i] + v[v.size() - i - 1];
+		max_pair = (pair > max_pair ? pair : max_pair);
+	}
+	return max_pair;
+}
+
 int main()
 {
 	vector<int> v0 = {3,5,2,3};
 	vector<int> v1 = {3,5,4,2,4,6};
 	/* 3+3 and 5+2 => 7 */
-	cout << naive(v0) << endl;
+	cout << naive(v0) << ", " << sol(v0) << endl;
 	/* 3+5, 4+4, 2+6 => 8 */
-	cout << naive(v1) << endl;
+	cout << naive(v1) << ", " << sol(v1) << endl;
 	return 0;
 }
