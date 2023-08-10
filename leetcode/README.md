@@ -5,7 +5,7 @@
 | --- | ----- | ------- |
 | 1876| Substrings of Size Three with Distinct Characters||
 | 1880| Check if Word Equals Summation of Two Words||
-|    1| Two Sum||
+|    1| Two Sum | Not Easy if there is no hash table|
 
 ## Medium
 |  #  | Title | Comment |
