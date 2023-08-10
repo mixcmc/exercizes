@@ -27,10 +27,8 @@ using namespace std;
 int convert(string str)
 {
 	int res = 0;
-	for (int i = 0; i < str.length(); ++i) {
-		res *= 10;
-		res += str[i] - 'a';
-		//cout << str[i] << " = " << str[i] - 'a' << " => " << res << endl;
+	for (auto&& c : str) {
+		res = res*10 + c - 'a';
 	}
 	return res;
 }
