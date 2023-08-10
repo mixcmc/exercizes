@@ -19,13 +19,28 @@ using namespace std;
 vector<int> sol(vector<int>& v, int targ)
 {
 	unordered_map<int,int> m;
+	/* O(N) on average */
 	for (int i = 0; i < v.size(); ++i)
 		m[v[i]] = i;
 
+	/* O(N) on average */
 	for (int i = 0; i < v.size(); ++i) {
 		int c = targ - v[i];
 		if (m.count(c) && m[c] != i)
 			return {i, m[c]};
+	}
+	return {};
+}
+
+vector<int> sol1(vector<int>& v, int targ)
+{
+	unordered_map<int,int> m;
+	/* O(N) on average */
+	for (int i = 0; i < v.size(); ++i) {
+		int c = targ - v[i];
+		if (m.count(c))
+			return {m[c], i};
+		m[v[i]] = i;
 	}
 	return {};
 }
@@ -44,8 +59,8 @@ int main()
 	vector<int> v0 = {2,7,11,15};
 	vector<int> v1 = {3,2,4};
 	vector<int> v2 = {3,3};
-	print(sol(v0,9));
-	print(sol(v1,6));
-	print(sol(v2,6));
+	print(sol(v0,9));print(sol1(v0,9));
+	print(sol(v1,6));print(sol1(v1,6));
+	print(sol(v2,6));print(sol1(v2,6));
 	return 0;
 }
