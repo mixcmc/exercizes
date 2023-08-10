@@ -3,7 +3,8 @@
 ## Easy
 |  #  | Title | Comment |
 | --- | ----- | ------- |
-| 1876|Substrings of Size Three with Distinct Characters||
+| 1876| Substrings of Size Three with Distinct Characters||
+| 1880| Check if Word Equals Summation of Two Words||
 
 ## Medium
 |  #  | Title | Comment |
