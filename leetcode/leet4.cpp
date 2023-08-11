@@ -15,17 +15,26 @@
  * */
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <iterator>
 using namespace std;
 
-int sol(vector<int>& v1, vector<int>& v2)
+double sol(vector<int>& v1, vector<int>& v2)
 {
-	int res = 0;
+	vector<int> v;
+	double res = 0;
+	merge(v1.begin(), v1.end(), v2.begin(), v2.end(), back_inserter(v));
+	int n = v.size();
+	if (n & 1) res = v[n/2];
+	else res = (double)(v[n/2] + v[n/2 - 1])/2;
 	return res;
 }
 
 int main()
 {
 	vector<int> v1 = {1,3}, v2 = {2};
+	vector<int> v3 = {1,2}, v4 = {3,4};
 	cout << sol(v1, v2) << endl;
+	cout << sol(v3, v4) << endl;
 	return 0;
 }
