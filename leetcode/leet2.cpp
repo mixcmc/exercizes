@@ -21,6 +21,15 @@ struct ListNode {
 	ListNode(int val_, ListNode *next_) : val(val_), next(next_) {}
 };
 
+void print(ListNode *l)
+{
+	while (l) {
+		cout << l->val << "->";
+		l = l->next;
+	}
+	cout << "null\n";
+}
+
 ListNode* construct(int n)
 {
 	ListNode *l = new ListNode(), *l1 = l;
@@ -46,15 +55,6 @@ void append(ListNode *a, ListNode *b, int *carry)
 	}
 }
 
-void print(ListNode *l)
-{
-	while (l) {
-		cout << l->val << "->";
-		l = l->next;
-	}
-	cout << "null\n";
-}
-
 ListNode* sol(ListNode *a, ListNode *b)
 {
 	ListNode *c = new ListNode(), *res = c;
@@ -72,7 +72,7 @@ ListNode* sol(ListNode *a, ListNode *b)
 	append(c, a, &carry);
 	append(c, b, &carry);
 	if (carry != 0) {
-		c->next = new ListNode(1);
+		append(c, new ListNode(), &carry);
 	}
 	return res;
 }
