@@ -29,6 +29,12 @@ double sol(vector<int>& v1, vector<int>& v2)
 	else res = (double)(v[n/2] + v[n/2 - 1])/2;
 	return res;
 }
+/* Ideas:
+ * 1. if medians are m1 and m2 => final median is somewhere between m1 and m2
+ * 2. median is in the middle of combined array
+ * 3. for array with bigger median get median idx, and check how many elements from smaller
+ * array will be stored in combined array
+ * */
 
 int main()
 {
