@@ -11,6 +11,7 @@
 |  #  | Title | Comment |
 | --- | ----- | ------- |
 | 1877| Minimize Maximum Pair Sum in Array||
+|    2| Add Two Numbers||
 
 ## Hard
 |  #  | Title | Comment |
