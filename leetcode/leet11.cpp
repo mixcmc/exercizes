@@ -49,6 +49,21 @@ int sol(vector<int>& v)
 	return res;
 }
 
+int sol1(vector<int>& v)
+{
+	int l = 0, r = v.size() - 1;
+	int s = 0;
+	/* O(n)*/
+	while (l < r) {
+		int m = v[l] > v[r] ? v[r] : v[l];
+		int ss = m*(r-l);
+		s = ss > s ? ss : s;
+		if (v[l] <= v[r]) l++;
+		else r--;
+	}
+	return s;
+}
+
 
 int main()
 {
@@ -57,10 +72,10 @@ int main()
 	vector<int> v2 = {1,2,3,2,1};
 	vector<int> v3 = {1,2,3,4,5,6,7,8};
 	vector<int> v4 = {8,7,6,5,4,3,2,1};
-	cout << sol(v0) << endl;
-	cout << sol(v1) << endl;
-	cout << sol(v2) << endl;
-	cout << sol(v3) << endl;
-	cout << sol(v4) << endl;
+	cout << sol(v0) << ", " << sol1(v0) << endl;
+	cout << sol(v1) << ", " << sol1(v1) << endl;
+	cout << sol(v2) << ", " << sol1(v2) << endl;
+	cout << sol(v3) << ", " << sol1(v3) << endl;
+	cout << sol(v4) << ", " << sol1(v4) << endl;
 	return 0;
 }
