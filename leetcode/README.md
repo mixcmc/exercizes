@@ -13,6 +13,8 @@
 | 1877| Minimize Maximum Pair Sum in Array||
 |    2| Add Two Numbers||
 |    7| Reverse Integer | Promoted from 'Easy' list |
+|   11| Container With Most Water||
+
 
 ## Hard
 |  #  | Title | Comment |
