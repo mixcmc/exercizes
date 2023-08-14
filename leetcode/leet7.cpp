@@ -26,8 +26,7 @@ int sol(int n)
 			cout << "(Over/underflow)";
 			return 0;
 		}
-		res *= 10;
-		res += n%10;
+		res = res*10 + n%10;
 		n /= 10;
 	}
 	return res;
