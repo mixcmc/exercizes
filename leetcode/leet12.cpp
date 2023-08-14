@@ -65,11 +65,30 @@ string sol(int n)
 	return res;
 }
 
+string sol1(int n)
+{
+	string res;
+	vector<pair<int, string>> v = {
+		{1000, "M"}, {900, "CM"},
+		{500, "D"}, {400, "CD"},
+		{100, "C"}, {90, "XC"},
+		{50, "L"}, {40, "XL"},
+		{10, "X"}, {9, "IX"},
+		{5, "V"}, {4, "IV"}, {1, "I"}};
+	for (int i = 0; i < v.size(); ++i) {
+		while (n >= v[i].first) {
+			n -= v[i].first;
+			res += v[i].second;
+		}
+	}
+	return res;
+}
+
 int main()
 {
 	vector<int> v = {3, 58, 1994, 3999, 7, 19, 91, 191, 9996};
 	for (auto vv : v) {
-		cout << vv << " => " << sol(vv) << endl;
+		cout << vv << " => " << sol(vv) << ", " << sol1(vv) << endl;
 	}
 	return 0;
 }
