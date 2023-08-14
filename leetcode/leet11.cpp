@@ -58,8 +58,15 @@ int sol1(vector<int>& v)
 		int m = v[l] > v[r] ? v[r] : v[l];
 		int ss = m*(r-l);
 		s = ss > s ? ss : s;
-		if (v[l] <= v[r]) l++;
-		else r--;
+		if (v[l] <= v[r]) {
+			do {
+				l++;
+			} while (l < r && v[l-1] >= v[l]);
+		} else {
+			do {
+				r--;
+			} while (l < r && v[r+1] >= v[r]);
+		}
 	}
 	return s;
 }
