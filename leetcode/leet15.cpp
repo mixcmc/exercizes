@@ -16,6 +16,7 @@
 #include <iostream>
 #include <iterator>
 #include <vector>
+#include <unordered_map>
 #include <algorithm>
 using namespace std;
 
@@ -46,7 +47,7 @@ vector<vector<int>> sol(vector<int>& v)
 		if (v[i] > 0) {
 			break;
 		}
-		/* ignore dups */
+		/* ignore dups, O(n) */
 		if (i > 0 && v[i] == v[i-1]) {
 			continue;
 		}
@@ -70,6 +71,42 @@ vector<vector<int>> sol(vector<int>& v)
 	return res;
 }
 
+vector<vector<int>> sol1(vector<int>& v)
+{
+	vector<vector<int>> res;
+	unordered_map<int, int> m;
+	/* O(nlogn) */
+	sort(v.begin(), v.end());
+	if (v.size() < 3 || v[0] > 0) return res;
+
+	/* O(n), only last accurence of each value stored */
+	for (int i = 0; i < v.size(); ++i) m[v[i]] = i;
+
+	/*  O(n)*O(n) = O(n^2) */
+	for (int i = 0; i < v.size() - 2; ++i) {
+		/* No solution in upper part if positive element */
+		if (v[i] > 0) {
+			break;
+		}
+		/* O(n) */
+		for (int j = i + 1; j < v.size() - 1; ++j) {
+			int wanted = -1*(v[i] + v[j]);
+			/* O(1) on average */
+			auto it = m.find(wanted);
+			if (it != m.end() && it->second > j) {
+				res.push_back({v[i], v[j], wanted});
+			}
+			/* skip dups for second number */
+			/* O(1) on average */
+			j = m.find(v[j])->second;
+		}
+		/* skip dups for first number */
+		/* O(1) on average */
+		i = m.find(v[i])->second;
+	}
+	return res;
+}
+
 int main()
 {
 	vector<vector<int>> v = {
@@ -82,8 +119,10 @@ int main()
 	};
 	for(auto& vv : v) {
 		print_v(vv);
-		cout << "=>\n";
+		cout << "Two pointers:\n";
 		print_vv(sol(vv));
+		cout << "unoredered_map:\n";
+		print_vv(sol1(vv));
 		cout << "---------\n";
 	}
 	return 0;
