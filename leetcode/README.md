@@ -17,6 +17,7 @@
 |   11| Container With Most Water||
 |   12| Integer to Roman||
 |   15|	3Sum||
+|   22| Generate Parentheses||
 
 ## Hard
 |  #  | Title | Comment |
